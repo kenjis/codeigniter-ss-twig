@@ -1,0 +1,23 @@
+<phpunit bootstrap="./phpunit.php" colors="true" backupGlobals="false">
+    <php>
+        <env name="CI_ENV" value="testing"/>
+    </php>
+
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-html" target="build/coverage"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">vendor/codeigniter/framework/application/libraries</directory>
+        </whitelist>
+    </filter>
+</phpunit>
