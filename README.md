@@ -67,8 +67,6 @@ Some helpers are added the functionality of auto-escaping for security.
 
 ## How to Run Tests
 
-To run tests, you must install CodeIgniter first.
-
 ~~~
 $ cd codeigniter-ss-twig
 $ composer install
