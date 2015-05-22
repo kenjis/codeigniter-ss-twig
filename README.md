@@ -77,7 +77,7 @@ $ phpunit
 
 ## Other Implementations for CodeIgniter 3.0
 
-* https://bitbucket.org/davidsosavaldes/ci-twig
+* https://gitlab.com/david-sosa-valdes/ci-twig
 
 ## Related Projects for CodeIgniter 3.0
 
