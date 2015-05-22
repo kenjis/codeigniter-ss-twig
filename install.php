@@ -15,7 +15,7 @@ class Installer
 {
     public static function install()
     {
-        static::copy('vendor/kenjis/codeigniter-ss-twig/libraries/Twig.php', 'application/libraries/Twig.php');
+        self::copy('vendor/kenjis/codeigniter-ss-twig/libraries/Twig.php', 'application/libraries/Twig.php');
     }
 
     private static function copy($src, $dst)
