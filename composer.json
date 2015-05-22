@@ -1,7 +1,7 @@
 {
     "name": "kenjis/codeigniter-ss-twig",
     "type": "project",
-    "description": "A Simele and Secure Twig integration for CodeIgniter 3.0",
+    "description": "A Simple and Secure Twig integration for CodeIgniter 3.0",
     "keywords": [
         "codeigniter",
         "twig"
