@@ -6,7 +6,9 @@ This package provides simple Twig integration for [CodeIgniter](https://github.c
 
 ```
 codeigniter/
-└─── application/libraries/Twig.php
+└── application/
+    └── libraries/
+        └── Twig.php
 ```
 
 ## Requirements
