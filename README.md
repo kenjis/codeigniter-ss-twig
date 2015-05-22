@@ -44,7 +44,7 @@ $this->load->library('Twig');
 
 Render Twig template:
 
-~~~
+~~~php
 $this->twig->render('welcome', $data);
 ~~~
 
