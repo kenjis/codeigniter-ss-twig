@@ -48,7 +48,7 @@ Render Twig template:
 $this->twig->render('welcome', $data);
 ~~~
 
-Above code render `views/welcome.twig`.
+Above code renders `views/welcome.twig`.
 
 ### Supported CodeIgniter Helpers
 
