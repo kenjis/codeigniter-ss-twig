@@ -10,6 +10,13 @@
 
 class Twig
 {
+	private $functions_asis = [
+		'base_url', 'site_url'
+	];
+	private $functions_safe = [
+		'form_open', 'form_close', 'form_error', 'set_value', 'form_hidden'
+	];
+
 	private $twig;
 	private $loader;
 
@@ -25,10 +32,10 @@ class Twig
 		}
 
 		if ($this->loader === null) {
-			$this->loader = new Twig_Loader_Filesystem(array(VIEWPATH));
+			$this->loader = new \Twig_Loader_Filesystem([VIEWPATH]);
 		}
 
-		$twig = new Twig_Environment($this->loader, [
+		$twig = new \Twig_Environment($this->loader, [
 			'cache'      => APPPATH . '/cache/twig',
 			'debug'      => $debug,
 			'autoescape' => TRUE,
@@ -36,11 +43,11 @@ class Twig
 
 		if ($debug)
 		{
-			$twig->addExtension(new Twig_Extension_Debug());
+			$twig->addExtension(new \Twig_Extension_Debug());
 		}
 
 		$this->twig = $twig;
-		$this->add_ci_functions();
+		$this->addCIFunctions();
 	}
 
 	public function setLoader($loader)
@@ -57,13 +64,10 @@ class Twig
 		$CI->output->set_output($this->twig->render($view, $params));
 	}
 
-	private function add_ci_functions()
+	private function addCIFunctions()
 	{
 		// as is functions
-		$list = [
-			'base_url', 'site_url'
-		];
-		foreach ($list as $function)
+		foreach ($this->functions_asis as $function)
 		{
 			if (function_exists($function))
 			{
@@ -77,10 +81,7 @@ class Twig
 		}
 
 		// safe functions
-		$safe_list = [
-			'form_open', 'form_close', 'form_error', 'set_value', 'form_hidden'
-		];
-		foreach ($safe_list as $function)
+		foreach ($this->functions_safe as $function)
 		{
 			if (function_exists($function))
 			{
@@ -127,6 +128,9 @@ class Twig
 		return anchor($uri, $title, $new_attr);
 	}
 
+	/**
+	 * @return \Twig_Environment
+	 */
 	public function getTwig()
 	{
 		return $this->twig;
