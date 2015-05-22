@@ -79,8 +79,8 @@ $ phpunit
 
 * https://bitbucket.org/davidsosavaldes/ci-twig
 
-## Related
+## Related Projects for CodeIgniter 3.0
 
 * [CodeIgniter Composer Installer](https://github.com/kenjis/codeigniter-composer-installer)
 * [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)
-* [CI PHPUnit Test for CodeIgniter 3.0](https://github.com/kenjis/ci-phpunit-test)
+* [CI PHPUnit Test](https://github.com/kenjis/ci-phpunit-test)
