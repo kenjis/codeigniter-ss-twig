@@ -44,10 +44,20 @@ Load Twig library:
 $this->load->library('Twig');
 ~~~
 
+Render Twig template and output to browsers:
+
+~~~php
+$this->twig->display('welcome', $data);
+~~~
+
+Above code renders `views/welcome.twig`.
+
+**Note:** I've changed the method name from `render()` to `display()`. Now `render()` method returns string only.
+
 Render Twig template:
 
 ~~~php
-$this->twig->render('welcome', $data);
+$output = $this->twig->render('welcome', $data);
 ~~~
 
 Above code renders `views/welcome.twig`.
@@ -79,7 +89,7 @@ $ phpunit
 
 ## Other Implementations for CodeIgniter 3.0
 
-* https://gitlab.com/david-sosa-valdes/ci-twig
+* https://gitlab.com/david-sosa-valdes/ci-attire
 
 ## Related Projects for CodeIgniter 3.0
 

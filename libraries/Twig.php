@@ -55,13 +55,31 @@ class Twig
 		$this->loader = $loader;
 	}
 
+	/**
+	 * Renders Twig Template and Set Output
+	 * 
+	 * @param string $view  template filename without `.twig`
+	 * @param array $params
+	 */
+	public function display($view, $params = [])
+	{
+		$CI =& get_instance();
+		$CI->output->set_output($this->render($view, $params));
+	}
+
+	/**
+	 * Renders Twig Template and Retruns as String
+	 * 
+	 * @param string $view  template filename without `.twig`
+	 * @param array $params
+	 * @return string
+	 */
 	public function render($view, $params = [])
 	{
 		$this->createTwig();
 
 		$view = $view . '.twig';
-		$CI =& get_instance();
-		$CI->output->set_output($this->twig->render($view, $params));
+		return $this->twig->render($view, $params);
 	}
 
 	private function addCIFunctions()
