@@ -20,7 +20,7 @@ codeigniter/
 
 ## Installation
 
-Install this project with Composer:
+### With Composer
 
 ~~~
 $ cd /path/to/codeigniter/
@@ -35,6 +35,34 @@ $ php vendor/kenjis/codeigniter-ss-twig/install.php
 
 * Above command always overwrites exisiting files.
 * You must run it at CodeIgniter project root folder.
+
+### Without Composer
+
+Download the latest Twig v1.x: https://github.com/twigphp/Twig/releases
+
+Unzip and install to `application/third_party` folder.
+
+Download the latest codeigniter-ss-twig.
+
+Unzip and copy `codeigniter-ss-twig/libraries/Twig.php` to `application/libraries` folder.
+
+Remove comment marks below and fix the path for `Autoloader.php`:
+
+~~~
+--- a/libraries/Twig.php
++++ b/libraries/Twig.php
+@@ -9,10 +9,8 @@
+  */
+ 
+ // If you don't use Composer, uncomment below
+-/*
+ require_once APPPATH . 'third_party/Twig-1.xx.x/lib/Twig/Autoloader.php';
+ Twig_Autoloader::register();
+-*/
+ 
+ class Twig
+ {
+~~~
 
 ## Usage
 
