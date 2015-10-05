@@ -16,7 +16,6 @@ codeigniter/
 ## Requirements
 
 * PHP 5.4.0 or later
-* Composer
 
 ## Installation
 
@@ -48,7 +47,7 @@ Unzip and copy `codeigniter-ss-twig/libraries/Twig.php` to `application/librarie
 
 Remove comment marks below and fix the path for `Autoloader.php`:
 
-~~~
+~~~diff
 --- a/libraries/Twig.php
 +++ b/libraries/Twig.php
 @@ -9,10 +9,8 @@
