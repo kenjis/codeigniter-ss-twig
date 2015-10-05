@@ -44,7 +44,7 @@ Load Twig library:
 $this->load->library('Twig');
 ~~~
 
-Render Twig template and output to browsers:
+Render Twig template and output to browser:
 
 ~~~php
 $this->twig->display('welcome', $data);
@@ -52,7 +52,7 @@ $this->twig->display('welcome', $data);
 
 Above code renders `views/welcome.twig`.
 
-**Note:** I've changed the method name from `render()` to `display()`. Now `render()` method returns string only.
+> **Note:** I've changed the method name from `render()` to `display()`. Now `render()` method returns string only.
 
 Render Twig template:
 
