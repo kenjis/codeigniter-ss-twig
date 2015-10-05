@@ -67,6 +67,7 @@ $GLOBALS['SEC'] = & load_class('Security', 'core');
 
 load_class('Loader', 'core');
 load_class('Router', 'core');
+load_class('Output', 'core');
 load_class('Input',  'core');
 load_class('Lang',   'core');
 
