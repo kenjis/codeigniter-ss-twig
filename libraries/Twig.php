@@ -10,6 +10,10 @@
 
 class Twig
 {
+	private $config = [
+		'paths' => [VIEWPATH],
+	];
+
 	private $functions_asis = [
 		'base_url', 'site_url'
 	];
@@ -19,6 +23,11 @@ class Twig
 
 	private $twig;
 	private $loader;
+
+	public function __construct($params = [])
+	{
+		$this->config = array_merge($this->config, $params);
+	}
 
 	public function createTwig()
 	{
@@ -31,8 +40,9 @@ class Twig
 			$debug = TRUE;
 		}
 
-		if ($this->loader === null) {
-			$this->loader = new \Twig_Loader_Filesystem([VIEWPATH]);
+		if ($this->loader === null)
+		{
+			$this->loader = new \Twig_Loader_Filesystem($this->config['paths']);
 		}
 
 		$twig = new \Twig_Environment($this->loader, [
