@@ -78,7 +78,7 @@ class Twig
 	}
 
 	/**
-	 * Renders Twig Template and Retruns as String
+	 * Renders Twig Template and Returns as String
 	 * 
 	 * @param string $view  template filename without `.twig`
 	 * @param array $params
