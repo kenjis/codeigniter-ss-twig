@@ -1,6 +1,6 @@
 <?php
 
-class TwigTest extends PHPUnit_Framework_TestCase
+class TwigHelperTest extends PHPUnit_Framework_TestCase
 {
     public static function setUpBeforeClass()
     {
