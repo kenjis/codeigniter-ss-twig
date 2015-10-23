@@ -19,7 +19,7 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
             'site_url' => '{{ site_url(\'"><s>abc</s><a name="test\') }}',
         ]);
         $CI->twig->setLoader($loader);
-        $CI->twig->createTwig();
+        $CI->twig->resetTwig();
         
         $this->obj = $CI->twig;
         $this->twig = $CI->twig->getTwig();

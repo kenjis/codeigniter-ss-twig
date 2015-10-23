@@ -35,8 +35,20 @@ class Twig
 		$this->config = array_merge($this->config, $params);
 	}
 
+	public function resetTwig()
+	{
+		$this->twig = null;
+		$this->createTwig();
+	}
+
 	public function createTwig()
 	{
+		// $this->twig is singleton
+		if ($this->twig !== null)
+		{
+			return;
+		}
+
 		if (ENVIRONMENT === 'production')
 		{
 			$debug = FALSE;
