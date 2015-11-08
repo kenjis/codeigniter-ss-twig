@@ -27,7 +27,14 @@ class Twig
 		'form_open', 'form_close', 'form_error', 'set_value', 'form_hidden'
 	];
 
+	/**
+	 * @var Twig_Environment
+	 */
 	private $twig;
+
+	/**
+	 * @var Twig_Loader_Filesystem
+	 */
 	private $loader;
 
 	public function __construct($params = [])
@@ -84,10 +91,22 @@ class Twig
 	}
 
 	/**
+	 * Registers a Global
+	 * 
+	 * @param string $name  The global name
+	 * @param mixed  $value The global value
+	 */
+	public function addGlobal($name, $value)
+	{
+		$this->createTwig();
+		$this->twig->addGlobal($name, $value);
+	}
+
+	/**
 	 * Renders Twig Template and Set Output
 	 * 
-	 * @param string $view  template filename without `.twig`
-	 * @param array $params
+	 * @param string $view   Template filename without `.twig`
+	 * @param array  $params Array of parameters to pass to the template
 	 */
 	public function display($view, $params = [])
 	{
@@ -98,8 +117,8 @@ class Twig
 	/**
 	 * Renders Twig Template and Returns as String
 	 * 
-	 * @param string $view  template filename without `.twig`
-	 * @param array $params
+	 * @param string $view   Template filename without `.twig`
+	 * @param array  $params Array of parameters to pass to the template
 	 * @return string
 	 */
 	public function render($view, $params = [])
@@ -157,7 +176,7 @@ class Twig
 	/**
 	 * @param string $uri
 	 * @param string $title
-	 * @param array $attributes [changed] only array is acceptable
+	 * @param array  $attributes [changed] only array is acceptable
 	 * @return string
 	 */
 	public function safe_anchor($uri = '', $title = '', $attributes = [])
@@ -179,6 +198,7 @@ class Twig
 	 */
 	public function getTwig()
 	{
+		$this->createTwig();
 		return $this->twig;
 	}
 }

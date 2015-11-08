@@ -34,4 +34,13 @@ class TwigTest extends PHPUnit_Framework_TestCase
         $output = $CI->output->get_output();
         $this->assertEquals('Hello CodeIgniter!'."\n", $output);
     }
+
+        public function testAddGlobal()
+    {
+        $obj = new Twig(['paths' => __DIR__ . '/../templates/']);
+        $obj->addGlobal('sitename', 'Twig Test Site');
+        
+        $output = $obj->render('global');
+        $this->assertEquals('<title>Twig Test Site</title>'."\n", $output);
+    }
 }
