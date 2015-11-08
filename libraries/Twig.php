@@ -16,9 +16,7 @@ Twig_Autoloader::register();
 
 class Twig
 {
-	private $config = [
-		'paths' => [VIEWPATH],
-	];
+	private $config = [];
 
 	private $functions_asis = [
 		'base_url', 'site_url'
@@ -44,6 +42,12 @@ class Twig
 
 	public function __construct($params = [])
 	{
+		// default config
+		$this->config = [
+			'paths' => [VIEWPATH],
+			'cache' => APPPATH . '/cache/twig',
+		];
+
 		$this->config = array_merge($this->config, $params);
 	}
 
@@ -76,7 +80,7 @@ class Twig
 		}
 
 		$twig = new \Twig_Environment($this->loader, [
-			'cache'      => APPPATH . '/cache/twig',
+			'cache'      => $this->config['cache'],
 			'debug'      => $debug,
 			'autoescape' => TRUE,
 		]);
