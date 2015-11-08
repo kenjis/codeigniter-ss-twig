@@ -91,14 +91,14 @@ Above code renders `views/welcome.twig`.
 
 ### Supported CodeIgniter Helpers
 
-* base_url
-* site_url
-* form_open
-* form_close
-* form_error
-* set_value
-* form_hidden
-* anchor
+* `base_url`
+* `site_url`
+* `form_open`
+* `form_close`
+* `form_error`
+* `set_value`
+* `form_hidden`
+* `anchor`
 
 Some helpers are added the functionality of auto-escaping for security.
 
