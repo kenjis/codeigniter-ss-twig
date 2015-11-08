@@ -65,11 +65,23 @@ Remove comment marks below and fix the path for `Autoloader.php`:
 
 ## Usage
 
-Load Twig library:
+### Loading Twig Library
 
 ~~~php
-$this->load->library('Twig');
+$this->load->library('twig');
 ~~~
+
+You can override the default configration:
+
+~~~php
+$config = [
+	'paths' => ['/path/to/twig/templates', VIEWPATH],
+	'cache' => '/path/to/twig/cache',
+];
+$this->load->library('twig', $config);
+~~~
+
+### Rendering Templates
 
 Render Twig template and output to browser:
 
@@ -88,6 +100,18 @@ $output = $this->twig->render('welcome', $data);
 ~~~
 
 Above code renders `views/welcome.twig`.
+
+### Adding a Global Variable
+
+~~~php
+$this->twig->addGlobal('sitename', 'My Awesome Site');
+~~~
+
+### Getting Twig_Environment Instance
+
+~~~php
+$twig = $this->twig->getTwig();
+~~~
 
 ### Supported CodeIgniter Helpers
 
@@ -114,7 +138,7 @@ $ composer install
 $ phpunit
 ~~~
 
-## Other Implementations for CodeIgniter 3.0
+## Other Twig Implementations for CodeIgniter 3.0
 
 * https://gitlab.com/david-sosa-valdes/ci-attire
 
