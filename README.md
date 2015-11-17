@@ -23,7 +23,7 @@ codeigniter/
 
 ~~~
 $ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-ss-twig:1.0.x@dev
+$ composer require kenjis/codeigniter-ss-twig
 ~~~
 
 Install `libraries/Twig.php` to your CodeIgniter application folder:
@@ -41,7 +41,7 @@ Download the latest Twig v1.x: https://github.com/twigphp/Twig/releases
 
 Unzip and install to `application/third_party` folder.
 
-Download the latest codeigniter-ss-twig.
+Download the latest codeigniter-ss-twig: https://github.com/kenjis/codeigniter-ss-twig/releases
 
 Unzip and copy `codeigniter-ss-twig/libraries/Twig.php` to `application/libraries` folder.
 
