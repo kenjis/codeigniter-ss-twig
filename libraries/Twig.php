@@ -51,13 +51,13 @@ class Twig
 		$this->config = array_merge($this->config, $params);
 	}
 
-	public function resetTwig()
+	protected function resetTwig()
 	{
 		$this->twig = null;
 		$this->createTwig();
 	}
 
-	public function createTwig()
+	protected function createTwig()
 	{
 		// $this->twig is singleton
 		if ($this->twig !== null)
@@ -93,7 +93,7 @@ class Twig
 		$this->twig = $twig;
 	}
 
-	public function setLoader($loader)
+	protected function setLoader($loader)
 	{
 		$this->loader = $loader;
 	}
@@ -140,7 +140,7 @@ class Twig
 		return $this->twig->render($view, $params);
 	}
 
-	private function addCIFunctions()
+	protected function addCIFunctions()
 	{
 		// Runs only once
 		if ($this->add_ci_functions)
@@ -198,7 +198,7 @@ class Twig
 	 * @param array  $attributes [changed] only array is acceptable
 	 * @return string
 	 */
-	public function safe_anchor($uri = '', $title = '', $attributes = [])
+	protected function safe_anchor($uri = '', $title = '', $attributes = [])
 	{
 		$uri = html_escape($uri);
 		$title = html_escape($title);

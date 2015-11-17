@@ -20,3 +20,6 @@ $_SERVER['argc'] = 1;
 copy('libraries/Twig.php', 'vendor/codeigniter/framework/application/libraries/Twig.php');
 
 require __DIR__ . '/ci_instance.php';
+
+// Load helper class for testing
+require __DIR__ . '/tests/ReflectionHelper.php';
