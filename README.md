@@ -140,7 +140,7 @@ $ phpunit
 
 ## Other Twig Implementations for CodeIgniter 3.0
 
-* https://gitlab.com/david-sosa-valdes/ci-attire
+* https://github.com/davidsosavaldes/Attire
 
 ## Related Projects for CodeIgniter 3.0
 
