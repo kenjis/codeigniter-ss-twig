@@ -128,7 +128,14 @@ Some helpers are added the functionality of auto-escaping for security.
 
 ### Reference
 
+#### Documentation
+
 * http://twig.sensiolabs.org/documentation
+
+#### Samples
+
+* https://github.com/kenjis/codeigniter-twig-samples
+* https://github.com/kenjis/codeigniter-tettei-apps
 
 ## How to Run Tests
 
