@@ -44,8 +44,9 @@ class Twig
 	{
 		// default config
 		$this->config = [
-			'paths' => [VIEWPATH],
-			'cache' => APPPATH . '/cache/twig',
+			'paths' 		=> [VIEWPATH],
+			'cache' 		=> APPPATH . '/cache/twig',
+			'twig.functions'	=> array(),
 		];
 
 		$this->config = array_merge($this->config, $params);
@@ -150,6 +151,20 @@ class Twig
 
 		// as is functions
 		foreach ($this->functions_asis as $function)
+		{
+			if (function_exists($function))
+			{
+				$this->twig->addFunction(
+					new \Twig_SimpleFunction(
+						$function,
+						$function
+					)
+				);
+			}
+		}
+		
+		// helper functions
+		foreach ($this->config['twig.functions'] as $function)
 		{
 			if (function_exists($function))
 			{
