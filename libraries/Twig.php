@@ -50,11 +50,11 @@ class Twig
 
 		$this->config = array_merge($this->config, $params);
 
-		if (isset($params['functions_asis']))
+		if (isset($params['functions']))
 		{
 			$this->functions_asis = 
 				array_unique(
-					array_merge($this->functions_asis, $params['functions_asis'])
+					array_merge($this->functions_asis, $params['functions'])
 				);
 		}
 		if (isset($params['functions_safe']))

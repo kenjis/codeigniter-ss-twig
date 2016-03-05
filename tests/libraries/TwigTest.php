@@ -80,7 +80,7 @@ class TwigTest extends PHPUnit_Framework_TestCase
     {
         $obj = new Twig([
             'paths' => __DIR__ . '/../templates/',
-            'functions_asis' => ['md5'],
+            'functions' => ['md5'],
             'cache' => false,
         ]);
         

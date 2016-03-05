@@ -71,7 +71,7 @@ Remove comment marks below and fix the path for `Autoloader.php`:
 $this->load->library('twig');
 ~~~
 
-You can override the default configration:
+You can override the default configuration:
 
 ~~~php
 $config = [
@@ -125,6 +125,20 @@ $twig = $this->twig->getTwig();
 * `anchor`
 
 Some helpers are added the functionality of auto-escaping for security.
+
+### Adding Your Functions
+
+You can add your functions with configuration:
+
+~~~php
+$config = [
+	'functions' => ['my_helper'],
+	'functions_safe' => ['my_safe_helper'],
+];
+$this->load->library('twig', $config);
+~~~
+
+If your filter explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and you have to make sure the output of the function is XSS free.
 
 ### Reference
 
