@@ -44,7 +44,7 @@ class TwigTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('<title>Twig Test Site</title>'."\n", $output);
     }
 
-    public function testAddCIFunctionsRunsOnlyOnce()
+    public function testAddFunctionsRunsOnlyOnce()
     {
         $obj = new Twig(['paths' => __DIR__ . '/../templates/']);
         
@@ -53,26 +53,55 @@ class TwigTest extends PHPUnit_Framework_TestCase
         ];
 
         $ref_obj = new ReflectionObject($obj);
-        $ref_property = $ref_obj->getProperty('add_ci_functions');
+        $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
-        $add_ci_functions = $ref_property->getValue($obj);
-        $this->assertEquals(false, $add_ci_functions);
+        $functions_added = $ref_property->getValue($obj);
+        $this->assertEquals(false, $functions_added);
 
         $output = $obj->render('welcome', $data);
 
         $ref_obj = new ReflectionObject($obj);
-        $ref_property = $ref_obj->getProperty('add_ci_functions');
+        $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
-        $add_ci_functions = $ref_property->getValue($obj);
-        $this->assertEquals(true, $add_ci_functions);
+        $functions_added = $ref_property->getValue($obj);
+        $this->assertEquals(true, $functions_added);
 
         // Calls render() twice
         $output = $obj->render('welcome', $data);
 
         $ref_obj = new ReflectionObject($obj);
-        $ref_property = $ref_obj->getProperty('add_ci_functions');
+        $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
-        $add_ci_functions = $ref_property->getValue($obj);
-        $this->assertEquals(true, $add_ci_functions);
+        $functions_added = $ref_property->getValue($obj);
+        $this->assertEquals(true, $functions_added);
     }
+
+    public function testFunctionAsIs()
+    {
+        $obj = new Twig([
+            'paths' => __DIR__ . '/../templates/',
+            'functions_asis' => ['md5'],
+            'cache' => false,
+        ]);
+        
+        $output = $obj->render('functions_asis');
+        $this->assertEquals('900150983cd24fb0d6963f7d28e17f72'."\n", $output);
+    }
+
+    public function testFunctionSafe()
+    {
+        $obj = new Twig([
+            'paths' => __DIR__ . '/../templates/',
+            'functions_safe' => ['test_safe'],
+            'cache' => false,
+        ]);
+        
+        $output = $obj->render('functions_safe');
+        $this->assertEquals('<s>test</s>'."\n", $output);
+    }
+}
+
+function test_safe()
+{
+    return '<s>test</s>';
 }

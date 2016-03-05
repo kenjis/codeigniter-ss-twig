@@ -26,9 +26,9 @@ class Twig
 	];
 
 	/**
-	 * @var bool Whether added CodeIgniter functions or not
+	 * @var bool Whether functions are added or not
 	 */
-	private $add_ci_functions = FALSE;
+	private $functions_added = FALSE;
 
 	/**
 	 * @var Twig_Environment
@@ -49,6 +49,21 @@ class Twig
 		];
 
 		$this->config = array_merge($this->config, $params);
+
+		if (isset($params['functions_asis']))
+		{
+			$this->functions_asis = 
+				array_unique(
+					array_merge($this->functions_asis, $params['functions_asis'])
+				);
+		}
+		if (isset($params['functions_safe']))
+		{
+			$this->functions_safe = 
+				array_unique(
+					array_merge($this->functions_safe, $params['functions_safe'])
+				);
+		}
 	}
 
 	protected function resetTwig()
@@ -132,18 +147,18 @@ class Twig
 	public function render($view, $params = [])
 	{
 		$this->createTwig();
-		// We call addCIFunctions() here, because we must call addCIFunctions()
+		// We call addFunctions() here, because we must call addFunctions()
 		// after loading CodeIgniter functions in a controller.
-		$this->addCIFunctions();
+		$this->addFunctions();
 
 		$view = $view . '.twig';
 		return $this->twig->render($view, $params);
 	}
 
-	protected function addCIFunctions()
+	protected function addFunctions()
 	{
 		// Runs only once
-		if ($this->add_ci_functions)
+		if ($this->functions_added)
 		{
 			return;
 		}
@@ -189,7 +204,7 @@ class Twig
 			);
 		}
 
-		$this->add_ci_functions = TRUE;
+		$this->functions_added = TRUE;
 	}
 
 	/**
