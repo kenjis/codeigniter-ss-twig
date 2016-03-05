@@ -138,7 +138,7 @@ $config = [
 $this->load->library('twig', $config);
 ~~~
 
-If your filter explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and you have to make sure the output of the function is XSS free.
+If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and you have to make sure the output of the function is XSS free.
 
 ### Reference
 
