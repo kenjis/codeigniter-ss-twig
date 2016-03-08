@@ -6,7 +6,7 @@ class TwigTest extends PHPUnit_Framework_TestCase
     {
         parent::setUpBeforeClass();
         $CI =& get_instance();
-        $CI->load->library('Twig');
+        $CI->load->library('twig');
         $CI->load->helper('url_helper');
         $CI->load->helper('form_helper');
     }
