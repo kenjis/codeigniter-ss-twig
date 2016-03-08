@@ -6,7 +6,7 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
     {
         parent::setUpBeforeClass();
         $CI =& get_instance();
-        $CI->load->library('Twig');
+        $CI->load->library('twig');
         $CI->load->helper('url_helper');
     }
 
@@ -34,15 +34,11 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
 
     public function test_safe_anchor()
     {
-        $safe_anchor = ReflectionHelper::getPrivateMethodInvoker(
-            $this->obj, 'safe_anchor'
-        );
-
-        $actual = $safe_anchor('news/local/123', 'My News', array('title' => 'The best news!'));
+        $actual = $this->obj->safe_anchor('news/local/123', 'My News', array('title' => 'The best news!'));
         $expected = '<a href="http://localhost/index.php/news/local/123" title="The best news!">My News</a>';
         $this->assertEquals($expected, $actual);
         
-        $actual = $safe_anchor('news/local/123', '<s>abc</s>', array('<s>name</s>' => '<s>val</s>'));
+        $actual = $this->obj->safe_anchor('news/local/123', '<s>abc</s>', array('<s>name</s>' => '<s>val</s>'));
         $expected = '<a href="http://localhost/index.php/news/local/123" &lt;s&gt;name&lt;/s&gt;="&lt;s&gt;val&lt;/s&gt;">&lt;s&gt;abc&lt;/s&gt;</a>';
         $this->assertEquals($expected, $actual);
     }
