@@ -213,7 +213,7 @@ class Twig
 	 * @param array  $attributes [changed] only array is acceptable
 	 * @return string
 	 */
-	protected function safe_anchor($uri = '', $title = '', $attributes = [])
+	public function safe_anchor($uri = '', $title = '', $attributes = [])
 	{
 		$uri = html_escape($uri);
 		$title = html_escape($title);
