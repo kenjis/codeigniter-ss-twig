@@ -1,6 +1,10 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
-## v0.2.0 (Not Released)
+## v0.2.0 (2016/03/08)
+
+### Fixed
+
+* Fix bug that CodeIgniter helper `anchor` does not work.
 
 ### Added
 
