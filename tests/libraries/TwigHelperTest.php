@@ -17,6 +17,7 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
         $loader = new Twig_Loader_Array([
             'base_url' => '{{ base_url(\'"><s>abc</s><a name="test\') }}',
             'site_url' => '{{ site_url(\'"><s>abc</s><a name="test\') }}',
+            'anchor'   => '{{ anchor(uri, title, attributes) }}',
         ]);
         $setLoader = ReflectionHelper::getPrivateMethodInvoker(
             $CI->twig, 'setLoader'
@@ -28,17 +29,36 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
         );
         $resetTwig();
 
+        $addFunctions = ReflectionHelper::getPrivateMethodInvoker(
+            $CI->twig, 'addFunctions'
+        );
+        $addFunctions();
+
         $this->obj = $CI->twig;
         $this->twig = $CI->twig->getTwig();
     }
 
-    public function test_safe_anchor()
+    public function test_anchor()
     {
-        $actual = $this->obj->safe_anchor('news/local/123', 'My News', array('title' => 'The best news!'));
+        $actual = $this->twig->render(
+            'anchor',
+            [
+                'uri' => 'news/local/123',
+                'title' => 'My News',
+                'attributes' => ['title' => 'The best news!']
+            ]
+        );
         $expected = '<a href="http://localhost/index.php/news/local/123" title="The best news!">My News</a>';
         $this->assertEquals($expected, $actual);
-        
-        $actual = $this->obj->safe_anchor('news/local/123', '<s>abc</s>', array('<s>name</s>' => '<s>val</s>'));
+
+        $actual = $this->twig->render(
+            'anchor',
+            [
+                'uri' => 'news/local/123',
+                'title' => '<s>abc</s>',
+                'attributes' => ['<s>name</s>' => '<s>val</s>']
+            ]
+        );
         $expected = '<a href="http://localhost/index.php/news/local/123" &lt;s&gt;name&lt;/s&gt;="&lt;s&gt;val&lt;/s&gt;">&lt;s&gt;abc&lt;/s&gt;</a>';
         $this->assertEquals($expected, $actual);
     }
