@@ -16,6 +16,8 @@ Twig_Autoloader::register();
 
 class Twig
 {
+        protected $CI;
+    
 	private $config = [];
 
 	private $functions_asis = [
@@ -42,28 +44,31 @@ class Twig
 
 	public function __construct($params = [])
 	{
-		// default config
-		$this->config = [
-			'paths' => [VIEWPATH],
-			'cache' => APPPATH . '/cache/twig',
-		];
+            
+            $this->CI = get_instance();
+            
+            // default config
+            $this->config = [
+                    'paths' => [VIEWPATH],
+                    'cache' => APPPATH . '/cache/twig',
+            ];
 
-		$this->config = array_merge($this->config, $params);
+            $this->config = array_merge($this->config, $params);
 
-		if (isset($params['functions']))
-		{
-			$this->functions_asis = 
-				array_unique(
-					array_merge($this->functions_asis, $params['functions'])
-				);
-		}
-		if (isset($params['functions_safe']))
-		{
-			$this->functions_safe = 
-				array_unique(
-					array_merge($this->functions_safe, $params['functions_safe'])
-				);
-		}
+            if (isset($params['functions']))
+            {
+                    $this->functions_asis = 
+                            array_unique(
+                                    array_merge($this->functions_asis, $params['functions'])
+                            );
+            }
+            if (isset($params['functions_safe']))
+            {
+                    $this->functions_safe = 
+                            array_unique(
+                                    array_merge($this->functions_safe, $params['functions_safe'])
+                            );
+            }
 	}
 
 	protected function resetTwig()
@@ -91,7 +96,8 @@ class Twig
 
 		if ($this->loader === null)
 		{
-			$this->loader = new \Twig_Loader_Filesystem($this->config['paths']);
+                    $this->_set_template_locations();
+                    $this->loader = new \Twig_Loader_Filesystem($this->config['paths']);
 		}
 
 		$twig = new \Twig_Environment($this->loader, [
@@ -235,4 +241,54 @@ class Twig
 		$this->createTwig();
 		return $this->twig;
 	}
+        
+        public function get_locations()
+        {
+            return $this->config['paths'];
+        }
+        
+        public function add_template_location($location_var)
+        {
+            if ( is_array($location_var) )
+            {
+                foreach ($location_var AS $location => $offset)
+                {
+                    if ( is_dir($location) )
+                    {
+                        array_push($this->config['paths'], $location );
+                    }
+                }
+            }
+            else
+            {
+                if ( is_dir($location_var) )
+                {
+                    array_push($this->config['paths'], $location_var );
+                }
+            }
+        }
+        
+        private function _set_template_locations()
+        {
+            if ( method_exists($this->CI->router, 'fetch_module') )
+            {
+                $this->_module = $this->CI->router->fetch_module();
+                if ( $this->_module )
+                {
+                    $module_locations = Modules::$locations;
+                    foreach ($module_locations AS $location => $offset)
+                    {
+                        if ( is_dir($location . $this->_module . '/views') )
+                        {
+                            //$this->config['paths'] = $location . $this->_module . '/views';
+                            array_push($this->config['paths'], $location . $this->_module . '/views');
+                        }
+                    }
+                }
+            }
+            if ( $this->loader )
+            {
+                $this->loader->setPaths($this->config['paths']);
+            }
+        }
 }
