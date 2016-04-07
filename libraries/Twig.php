@@ -235,4 +235,54 @@ class Twig
 		$this->createTwig();
 		return $this->twig;
 	}
+	
+	public function get_locations()
+        {
+            return $this->config['paths'];
+        }
+        
+        public function add_template_location($location_var)
+        {
+            if ( is_array($location_var) )
+            {
+                foreach ($location_var AS $location => $offset)
+                {
+                    if ( is_dir($location) )
+                    {
+                        array_push($this->config['paths'], $location );
+                    }
+                }
+            }
+            else
+            {
+                if ( is_dir($location_var) )
+                {
+                    array_push($this->config['paths'], $location_var );
+                }
+            }
+        }
+        
+        private function _set_template_locations()
+        {
+            if ( method_exists($this->CI->router, 'fetch_module') )
+            {
+                $this->_module = $this->CI->router->fetch_module();
+                if ( $this->_module )
+                {
+                    $module_locations = Modules::$locations;
+                    foreach ($module_locations AS $location => $offset)
+                    {
+                        if ( is_dir($location . $this->_module . '/views') )
+                        {
+                            //$this->config['paths'] = $location . $this->_module . '/views';
+                            array_push($this->config['paths'], $location . $this->_module . '/views');
+                        }
+                    }
+                }
+            }
+            if ( $this->loader )
+            {
+                $this->loader->setPaths($this->config['paths']);
+            }
+        }
 }
