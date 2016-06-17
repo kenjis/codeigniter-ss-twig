@@ -1,5 +1,11 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
+## v0.2.1 (2016/06/17)
+
+### Fixed
+
+* Fix duplicated slashes in the cache path.
+
 ## v0.2.0 (2016/03/08)
 
 ### Fixed
