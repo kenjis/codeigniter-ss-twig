@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/kenjis/codeigniter-ss-twig/v/stable)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![Total Downloads](https://poser.pugx.org/kenjis/codeigniter-ss-twig/downloads)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![Latest Unstable Version](https://poser.pugx.org/kenjis/codeigniter-ss-twig/v/unstable)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![License](https://poser.pugx.org/kenjis/codeigniter-ss-twig/license)](https://packagist.org/packages/kenjis/codeigniter-ss-twig)
 
-This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.0.
+This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.x.
 
 ## Folder Structure
 
@@ -117,12 +117,12 @@ $twig = $this->twig->getTwig();
 
 * `base_url`
 * `site_url`
+* `anchor`
 * `form_open`
 * `form_close`
 * `form_error`
-* `set_value`
 * `form_hidden`
-* `anchor`
+* `set_value`
 
 Some helpers are added the functionality of auto-escaping for security.
 
@@ -159,11 +159,11 @@ $ composer install
 $ phpunit
 ~~~
 
-## Other Twig Implementations for CodeIgniter 3.0
+## Other Twig Implementations for CodeIgniter 3.x
 
 * https://github.com/davidsosavaldes/Attire
 
-## Related Projects for CodeIgniter 3.0
+## Related Projects for CodeIgniter 3.x
 
 * [CodeIgniter Composer Installer](https://github.com/kenjis/codeigniter-composer-installer)
 * [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)

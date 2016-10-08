@@ -1,5 +1,11 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
+## v0.3.0 (Not Released)
+
+### Added
+
+* Add functionality to override any Twig Environment options.
+
 ## v0.2.1 (2016/06/17)
 
 ### Fixed
