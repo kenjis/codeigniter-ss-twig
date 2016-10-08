@@ -17,7 +17,13 @@ Twig_Autoloader::register();
 class Twig
 {
 	/**
+	 * @var array Paths to Twig templates
+	 */
+	private $paths = [];
+
+	/**
 	 * @var array Twig Environment Options
+	 * @see http://twig.sensiolabs.org/doc/api.html#environment-options
 	 */
 	private $config = [];
 
@@ -34,6 +40,8 @@ class Twig
 	 */
 	private $functions_safe = [
 		'form_open', 'form_close', 'form_error', 'form_hidden', 'set_value',
+//		'form_open_multipart', 'form_upload', 'form_submit', 'form_dropdown',
+//		'set_radio',
 	];
 
 	/**
@@ -53,22 +61,13 @@ class Twig
 
 	public function __construct($params = [])
 	{
-		// default config
-		$this->config = [
-			'paths'      => [VIEWPATH],
-			'cache'      => APPPATH . 'cache/twig',
-			'debug'      => ENVIRONMENT !== 'production',
-			'autoescape' => TRUE,
-		];
-
-		$this->config = array_merge($this->config, $params);
-
 		if (isset($params['functions']))
 		{
 			$this->functions_asis =
 				array_unique(
 					array_merge($this->functions_asis, $params['functions'])
 				);
+			unset($params['functions']);
 		}
 		if (isset($params['functions_safe']))
 		{
@@ -76,7 +75,27 @@ class Twig
 				array_unique(
 					array_merge($this->functions_safe, $params['functions_safe'])
 				);
+			unset($params['functions_safe']);
 		}
+
+		if (isset($params['paths']))
+		{
+			$this->paths = $params['paths'];
+			unset($params['paths']);
+		}
+		else
+		{
+			$this->paths = [VIEWPATH];
+		}
+
+		// default Twig config
+		$this->config = [
+			'cache'      => APPPATH . 'cache/twig',
+			'debug'      => ENVIRONMENT !== 'production',
+			'autoescape' => TRUE,
+		];
+
+		$this->config = array_merge($this->config, $params);
 	}
 
 	protected function resetTwig()
@@ -95,7 +114,7 @@ class Twig
 
 		if ($this->loader === null)
 		{
-			$this->loader = new \Twig_Loader_Filesystem($this->config['paths']);
+			$this->loader = new \Twig_Loader_Filesystem($this->paths);
 		}
 
 		$twig = new \Twig_Environment($this->loader, $this->config);
