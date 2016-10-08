@@ -16,11 +16,22 @@ Twig_Autoloader::register();
 
 class Twig
 {
+	/**
+	 * @var array Twig Environment Options
+	 */
 	private $config = [];
 
+	/**
+	 * @var array Functions to add to Twig
+	 */
 	private $functions_asis = [
 		'base_url', 'site_url',
 	];
+
+	/**
+	 * @var array Functions with `is_safe` option
+	 * @see http://twig.sensiolabs.org/doc/advanced.html#automatic-escaping
+	 */
 	private $functions_safe = [
 		'form_open', 'form_close', 'form_error', 'form_hidden', 'set_value',
 	];
@@ -44,8 +55,10 @@ class Twig
 	{
 		// default config
 		$this->config = [
-			'paths' => [VIEWPATH],
-			'cache' => APPPATH . 'cache/twig',
+			'paths'      => [VIEWPATH],
+			'cache'      => APPPATH . 'cache/twig',
+			'debug'      => ENVIRONMENT !== 'production',
+			'autoescape' => TRUE,
 		];
 
 		$this->config = array_merge($this->config, $params);
@@ -80,27 +93,14 @@ class Twig
 			return;
 		}
 
-		if (ENVIRONMENT === 'production')
-		{
-			$debug = FALSE;
-		}
-		else
-		{
-			$debug = TRUE;
-		}
-
 		if ($this->loader === null)
 		{
 			$this->loader = new \Twig_Loader_Filesystem($this->config['paths']);
 		}
 
-		$twig = new \Twig_Environment($this->loader, [
-			'cache'      => $this->config['cache'],
-			'debug'      => $debug,
-			'autoescape' => TRUE,
-		]);
+		$twig = new \Twig_Environment($this->loader, $this->config);
 
-		if ($debug)
+		if ($this->config['debug'])
 		{
 			$twig->addExtension(new \Twig_Extension_Debug());
 		}
