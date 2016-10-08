@@ -19,10 +19,10 @@ class Twig
 	private $config = [];
 
 	private $functions_asis = [
-		'base_url', 'site_url'
+		'base_url', 'site_url',
 	];
 	private $functions_safe = [
-		'form_open', 'form_close', 'form_error', 'set_value', 'form_hidden'
+		'form_open', 'form_close', 'form_error', 'form_hidden', 'set_value',
 	];
 
 	/**
@@ -52,14 +52,14 @@ class Twig
 
 		if (isset($params['functions']))
 		{
-			$this->functions_asis = 
+			$this->functions_asis =
 				array_unique(
 					array_merge($this->functions_asis, $params['functions'])
 				);
 		}
 		if (isset($params['functions_safe']))
 		{
-			$this->functions_safe = 
+			$this->functions_safe =
 				array_unique(
 					array_merge($this->functions_safe, $params['functions_safe'])
 				);
@@ -115,7 +115,7 @@ class Twig
 
 	/**
 	 * Registers a Global
-	 * 
+	 *
 	 * @param string $name  The global name
 	 * @param mixed  $value The global value
 	 */
@@ -127,7 +127,7 @@ class Twig
 
 	/**
 	 * Renders Twig Template and Set Output
-	 * 
+	 *
 	 * @param string $view   Template filename without `.twig`
 	 * @param array  $params Array of parameters to pass to the template
 	 */
@@ -139,7 +139,7 @@ class Twig
 
 	/**
 	 * Renders Twig Template and Returns as String
-	 * 
+	 *
 	 * @param string $view   Template filename without `.twig`
 	 * @param array  $params Array of parameters to pass to the template
 	 * @return string
@@ -217,7 +217,7 @@ class Twig
 	{
 		$uri = html_escape($uri);
 		$title = html_escape($title);
-		
+
 		$new_attr = [];
 		foreach ($attributes as $key => $val)
 		{
