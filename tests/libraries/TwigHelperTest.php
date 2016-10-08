@@ -1,18 +1,19 @@
 <?php
 
+require __DIR__.'/../../libraries/Twig.php';
+
 class TwigHelperTest extends PHPUnit_Framework_TestCase
 {
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
         $CI =& get_instance();
-        $CI->load->library('twig');
-        $CI->load->helper('url_helper');
+        $CI->load->helper('url');
     }
 
     public function setUp()
     {
-        $CI =& get_instance();
+        $twig = new Twig();
 
         $loader = new Twig_Loader_Array([
             'base_url' => '{{ base_url(\'"><s>abc</s><a name="test\') }}',
@@ -20,22 +21,22 @@ class TwigHelperTest extends PHPUnit_Framework_TestCase
             'anchor'   => '{{ anchor(uri, title, attributes) }}',
         ]);
         $setLoader = ReflectionHelper::getPrivateMethodInvoker(
-            $CI->twig, 'setLoader'
+            $twig, 'setLoader'
         );
         $setLoader($loader);
 
         $resetTwig = ReflectionHelper::getPrivateMethodInvoker(
-            $CI->twig, 'resetTwig'
+            $twig, 'resetTwig'
         );
         $resetTwig();
 
         $addFunctions = ReflectionHelper::getPrivateMethodInvoker(
-            $CI->twig, 'addFunctions'
+            $twig, 'addFunctions'
         );
         $addFunctions();
 
-        $this->obj = $CI->twig;
-        $this->twig = $CI->twig->getTwig();
+        $this->obj = $twig;
+        $this->twig = $twig->getTwig();
     }
 
     public function test_anchor()
