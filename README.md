@@ -138,7 +138,7 @@ $config = [
 $this->load->library('twig', $config);
 ~~~
 
-If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and you have to make sure the output of the function is XSS free.
+If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and **you have to make sure the output of the function is XSS free**.
 
 ### Reference
 
@@ -167,7 +167,7 @@ $ phpunit
 
 * [CodeIgniter Composer Installer](https://github.com/kenjis/codeigniter-composer-installer)
 * [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)
-* [CI PHPUnit Test](https://github.com/kenjis/ci-phpunit-test)
+* [ci-phpunit-test](https://github.com/kenjis/ci-phpunit-test)
 * [CodeIgniter Doctrine](https://github.com/kenjis/codeigniter-doctrine)
 * [CodeIgniter Deployer](https://github.com/kenjis/codeigniter-deployer)
 * [CodeIgniter3 Filename Checker](https://github.com/kenjis/codeigniter3-filename-checker)
