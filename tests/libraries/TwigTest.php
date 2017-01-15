@@ -11,7 +11,7 @@ class TwigTest extends PHPUnit_Framework_TestCase
 		$CI->load->helper('form_helper');
 	}
 
-	public function testRedner()
+	public function testRender()
 	{
 		$obj = new Twig(['paths' => __DIR__ . '/../templates/']);
 
@@ -19,6 +19,17 @@ class TwigTest extends PHPUnit_Framework_TestCase
 			'name' => 'CodeIgniter',
 		];
 		$output = $obj->render('welcome', $data);
+		$this->assertEquals('Hello CodeIgniter!' . "\n", $output);
+	}
+
+	public function testRenderTemplateMacro()
+	{
+		$obj = new Twig(['paths' => __DIR__ . '/../templates/']);
+
+		$data = [
+			'name' => 'CodeIgniter',
+		];
+		$output = $obj->renderTemplateMacro('macro', 'welcome', $data);
 		$this->assertEquals('Hello CodeIgniter!' . "\n", $output);
 	}
 

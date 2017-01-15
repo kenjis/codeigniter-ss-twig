@@ -174,6 +174,34 @@ class Twig
 		return $this->twig->render($view, $params);
 	}
 
+	/**
+	 * Renders a Macro from a Twig Template and Returns as String
+	 *
+	 * @param string $view   Template filename without `.twig`
+	 * @param string $macro  Template macro name as it appears in the template
+	 * @param array  $params Array of parameters to pass to the template's macro
+	 * @return string
+	 */
+	public function renderTemplateMacro($view, $macro, $params = [])
+	{
+
+		$this->createTwig();
+		// We call addFunctions() here, because we must call addFunctions()
+		// after loading CodeIgniter functions in a controller.
+		$this->addFunctions();
+
+		// Load the Template
+		$view = $view . '.twig';
+		$template = $this->twig->loadTemplate($view);
+
+		// Render the Template's macro
+		$macroMethod = "get".$macro;
+
+		// Return the rendered macro
+		$result = call_user_func(array($template, $macroMethod), $params);
+		return "".$result;
+	}
+
 	protected function addFunctions()
 	{
 		// Runs only once

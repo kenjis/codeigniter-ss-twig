@@ -52,13 +52,13 @@ Remove comment marks below and fix the path for `Autoloader.php`:
 +++ b/libraries/Twig.php
 @@ -9,10 +9,8 @@
   */
- 
+
  // If you don't use Composer, uncomment below
 -/*
  require_once APPPATH . 'third_party/Twig-1.xx.x/lib/Twig/Autoloader.php';
  Twig_Autoloader::register();
 -*/
- 
+
  class Twig
  {
 ~~~
@@ -100,6 +100,14 @@ $output = $this->twig->render('welcome', $data);
 ~~~
 
 Above code renders `views/welcome.twig`.
+
+Render a Macro in a Twig Template:
+
+~~~php
+$output = $this->twig->renderTemplateMacro('welcome','helloWorld', $data);
+~~~
+
+Above code renders `views/welcome.twig` **macro** called `helloWorld`.
 
 ### Adding a Global Variable
 
