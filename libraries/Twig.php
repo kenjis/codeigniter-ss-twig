@@ -92,7 +92,7 @@ class Twig
 		$this->config = [
 			'cache'      => APPPATH . 'cache/twig',
 			'debug'      => ENVIRONMENT !== 'production',
-			'autoescape' => TRUE,
+			'autoescape' => 'html',
 		];
 
 		$this->config = array_merge($this->config, $params);
