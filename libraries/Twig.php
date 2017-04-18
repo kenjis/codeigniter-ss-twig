@@ -173,6 +173,16 @@ class Twig
 		$view = $view . '.twig';
 		return $this->twig->render($view, $params);
 	}
+	
+	public function createTemplate( $html, $params = [] )
+        {
+            $CI =& get_instance();
+            $this->createTwig();
+            $this->addFunctions();
+            
+            $template = $this->twig->createTemplate( $html );
+            $CI->output->set_output( $template->render( $params ) );
+        }
 
 	protected function addFunctions()
 	{
