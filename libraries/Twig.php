@@ -171,7 +171,12 @@ class Twig
 		$this->addFunctions();
 
 		$view = $view . '.twig';
-		return $this->twig->render($view, $params);
+		
+		try {
+			return $this->twig->render($view, $params);
+		}catch(Twig_Error_Loader $e){
+			show_error($e->getMessage(), 500, 'Error Loading Page');
+		}
 	}
 
 	protected function addFunctions()
