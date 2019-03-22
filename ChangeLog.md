@@ -6,6 +6,10 @@
 
 * Add functionality to override any Twig Environment options.
 
+### Changed
+
+* Require Twig 1.22.0 or later.
+
 ## v0.2.1 (2016/06/17)
 
 ### Fixed
