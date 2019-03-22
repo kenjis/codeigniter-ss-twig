@@ -157,12 +157,8 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 ~~~
 $ cd codeigniter-ss-twig
 $ composer install
-$ phpunit
+$ vendor/bin/phpunit
 ~~~
-
-## Other Twig Implementations for CodeIgniter 3.x
-
-* https://github.com/davidsosavaldes/Attire
 
 ## Related Projects for CodeIgniter 3.x
 
