@@ -16,7 +16,7 @@ codeigniter/
 ## Requirements
 
 * PHP 5.4.0 or later
-* Twig 1.22.0 or later (Also, simply checked with Twig v2.x)
+* Twig 1.38.0 or later (Also, simply checked with Twig v2.x)
 
 ## Installation
 

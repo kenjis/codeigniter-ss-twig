@@ -1,5 +1,15 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
+## v0.4.0 (2019/03/22)
+
+### Changed
+
+* Require Twig 1.38.0 or later.
+
+### Added
+
+* No direct script access allowed.
+
 ## v0.3.0 (2018/08/14)
 
 ### Added
