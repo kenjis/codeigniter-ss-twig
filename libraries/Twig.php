@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Part of CodeIgniter Simple and Secure Twig
  *
