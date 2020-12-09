@@ -87,7 +87,7 @@ class Twig
 
 		// default Twig config
 		$this->config = [
-			'cache'      => APPPATH . 'cache/twig',
+			'cache'      => WRITEPATH . 'cache/twig',
 			'debug'      => ENVIRONMENT !== 'production',
 			'autoescape' => 'html',
 		];
