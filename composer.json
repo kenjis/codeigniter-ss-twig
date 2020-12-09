@@ -1,8 +1,9 @@
 {
     "name": "kenjis/codeigniter-ss-twig",
-    "description": "A Simple and Secure Twig integration for CodeIgniter 3.x",
+    "description": "A Simple and Secure Twig integration for CodeIgniter",
     "keywords": [
         "codeigniter",
+        "codeigniter4",
         "twig"
     ],
     "license": "MIT",
@@ -13,16 +14,16 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "twig/twig": "~1.38"
+        "php": ">=7.2.0",
+        "twig/twig": "^3.1.1"
     },
     "require-dev": {
-        "codeigniter/framework": "3.1.*",
-        "phpunit/phpunit": "^5.6"
+        "codeigniter4/framework": "^4.0.4",
+        "phpunit/phpunit": "^8.5"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
+    "autoload": {
+        "psr-4": {
+          "Kenjis\\CI4Twig\\": "src/CI4Twig/"
         }
     }
 }
