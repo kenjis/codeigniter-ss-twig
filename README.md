@@ -2,21 +2,13 @@
 
 [![Latest Stable Version](https://poser.pugx.org/kenjis/codeigniter-ss-twig/v/stable)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![Total Downloads](https://poser.pugx.org/kenjis/codeigniter-ss-twig/downloads)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![Latest Unstable Version](https://poser.pugx.org/kenjis/codeigniter-ss-twig/v/unstable)](https://packagist.org/packages/kenjis/codeigniter-ss-twig) [![License](https://poser.pugx.org/kenjis/codeigniter-ss-twig/license)](https://packagist.org/packages/kenjis/codeigniter-ss-twig)
 
-This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.x.
-
-## Folder Structure
-
-```
-codeigniter/
-└── application/
-    └── libraries/
-        └── Twig.php
-```
+This package provides simple Twig integration for [CodeIgniter](https://github.com/codeigniter4/CodeIgniter4) 4.x.
 
 ## Requirements
 
-* PHP 5.4.0 or later
-* Twig 1.38.0 or later (Also, simply checked with Twig v2.x)
+* PHP 7.2 or later
+* CodeIgniter 4.0.4 or later
+* Twig 3.1.1 or later
 
 ## Installation
 
@@ -24,44 +16,7 @@ codeigniter/
 
 ~~~
 $ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-ss-twig
-~~~
-
-Install `libraries/Twig.php` to your CodeIgniter application folder:
-
-~~~
-$ php vendor/kenjis/codeigniter-ss-twig/install.php
-~~~
-
-* Above command always overwrites exisiting files.
-* You must run it at CodeIgniter project root folder.
-
-### Without Composer
-
-Download the latest Twig v1.x: https://github.com/twigphp/Twig/releases
-
-Unzip and install to `application/third_party` folder.
-
-Download the latest codeigniter-ss-twig: https://github.com/kenjis/codeigniter-ss-twig/releases
-
-Unzip and copy `codeigniter-ss-twig/libraries/Twig.php` to `application/libraries` folder.
-
-Remove comment marks below and fix the path for `Autoloader.php`:
-
-~~~diff
---- a/libraries/Twig.php
-+++ b/libraries/Twig.php
-@@ -9,10 +9,8 @@
-  */
- 
- // If you don't use Composer, uncomment below
--/*
- require_once APPPATH . 'third_party/Twig-1.xx.x/lib/Twig/Autoloader.php';
- Twig_Autoloader::register();
--*/
- 
- class Twig
- {
+$ composer require kenjis/codeigniter-ss-twig:4.x-dev
 ~~~
 
 ## Usage
@@ -69,7 +24,7 @@ Remove comment marks below and fix the path for `Autoloader.php`:
 ### Loading Twig Library
 
 ~~~php
-$this->load->library('twig');
+$this->twig = new \Kenjis\CI4Twig\Twig();
 ~~~
 
 You can override the default configuration:
@@ -79,7 +34,7 @@ $config = [
 	'paths' => ['/path/to/twig/templates', VIEWPATH],
 	'cache' => '/path/to/twig/cache',
 ];
-$this->load->library('twig', $config);
+$this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
 
 ### Rendering Templates
@@ -90,9 +45,7 @@ Render Twig template and output to browser:
 $this->twig->display('welcome', $data);
 ~~~
 
-Above code renders `views/welcome.twig`.
-
-> **Note:** I've changed the method name from `render()` to `display()`. Now `render()` method returns string only.
+The above code renders `Views/welcome.twig`.
 
 Render Twig template:
 
@@ -100,7 +53,7 @@ Render Twig template:
 $output = $this->twig->render('welcome', $data);
 ~~~
 
-Above code renders `views/welcome.twig`.
+The above code renders `Views/welcome.twig`.
 
 ### Adding a Global Variable
 
@@ -108,7 +61,7 @@ Above code renders `views/welcome.twig`.
 $this->twig->addGlobal('sitename', 'My Awesome Site');
 ~~~
 
-### Getting Twig_Environment Instance
+### Getting Twig\Environment Instance
 
 ~~~php
 $twig = $this->twig->getTwig();
@@ -136,7 +89,7 @@ $config = [
 	'functions' => ['my_helper'],
 	'functions_safe' => ['my_safe_helper'],
 ];
-$this->load->library('twig', $config);
+$this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
 
 If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and **you have to make sure the output of the function is XSS free**.
@@ -145,7 +98,7 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 
 #### Documentation
 
-* http://twig.sensiolabs.org/documentation
+* https://twig.symfony.com/doc/3.x/
 
 #### Samples
 
@@ -153,6 +106,8 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 * https://github.com/kenjis/codeigniter-tettei-apps
 
 ## How to Run Tests
+
+@TODO
 
 ~~~
 $ cd codeigniter-ss-twig
