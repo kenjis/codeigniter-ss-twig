@@ -4,6 +4,8 @@
 
 This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.x.
 
+If you use CodeIgniter4, check [4.x](https://github.com/kenjis/codeigniter-ss-twig/tree/4.x) branch (under development).
+
 ## Folder Structure
 
 ```
@@ -53,13 +55,13 @@ Remove comment marks below and fix the path for `Autoloader.php`:
 +++ b/libraries/Twig.php
 @@ -9,10 +9,8 @@
   */
- 
+
  // If you don't use Composer, uncomment below
 -/*
  require_once APPPATH . 'third_party/Twig-1.xx.x/lib/Twig/Autoloader.php';
  Twig_Autoloader::register();
 -*/
- 
+
  class Twig
  {
 ~~~
