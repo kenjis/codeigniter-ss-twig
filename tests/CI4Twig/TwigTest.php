@@ -1,14 +1,18 @@
 <?php
+namespace Kenjis\CI4Twig;
 
-class TwigTest extends PHPUnit_Framework_TestCase
+use ReflectionObject;
+
+require __DIR__ . '/../twig_functions.php';
+
+class TwigTest extends TestCase
 {
-	public static function setUpBeforeClass()
+	public static function setUpBeforeClass(): void
 	{
 		parent::setUpBeforeClass();
-		$CI =& get_instance();
-		$CI->load->library('twig');
-		$CI->load->helper('url_helper');
-		$CI->load->helper('form_helper');
+
+		helper('url');
+		helper('form');
 	}
 
 	public function testRedner()
@@ -26,13 +30,12 @@ class TwigTest extends PHPUnit_Framework_TestCase
 	{
 		$obj = new Twig(['paths' => __DIR__ . '/../templates/']);
 
+		$this->expectOutputString('Hello CodeIgniter!' . "\n");
+
 		$data = [
 			'name' => 'CodeIgniter',
 		];
 		$obj->display('welcome', $data);
-		$CI =& get_instance();
-		$output = $CI->output->get_output();
-		$this->assertEquals('Hello CodeIgniter!' . "\n", $output);
 	}
 
 	public function testAddGlobal()
@@ -99,9 +102,4 @@ class TwigTest extends PHPUnit_Framework_TestCase
 		$output = $obj->render('functions_safe');
 		$this->assertEquals('<s>test</s>' . "\n", $output);
 	}
-}
-
-function test_safe()
-{
-	return '<s>test</s>';
 }
