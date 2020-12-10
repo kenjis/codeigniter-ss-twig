@@ -4,7 +4,7 @@
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
- * @copyright  2020 Kenji Suzuki
+ * @copyright  2015 Kenji Suzuki
  * @link       https://github.com/kenjis/codeigniter-ss-twig
  */
 
@@ -70,6 +70,7 @@ class Twig
                 );
             unset($params['functions']);
         }
+
         if (isset($params['functions_safe'])) {
             $this->functions_safe =
                 array_unique(
