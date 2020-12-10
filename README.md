@@ -109,8 +109,6 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 
 ## How to Run Tests
 
-@TODO
-
 ~~~
 $ cd codeigniter-ss-twig
 $ composer install
