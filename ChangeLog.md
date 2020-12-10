@@ -1,5 +1,12 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
+## v4.0.0 (Not Released)
+
+### Changed
+
+* Require Twig 3.1.1 or later.
+* Compatible with CodeIgniter 4.0.4
+
 ## v0.4.0 (2019/03/22)
 
 ### Changed
