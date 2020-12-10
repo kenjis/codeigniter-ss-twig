@@ -1,12 +1,10 @@
 <?php
-/**
- * Part of CI PHPUnit Test
- *
- * @author     Kenji Suzuki <https://github.com/kenjis>
- * @license    MIT License
- * @copyright  2015 Kenji Suzuki
- * @link       https://github.com/kenjis/ci-phpunit-test
- */
+namespace Kenjis\CI4Twig;
+
+use Closure;
+use ReflectionMethod;
+use ReflectionObject;
+use ReflectionClass;
 
 class ReflectionHelper
 {
