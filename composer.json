@@ -25,5 +25,10 @@
         "psr-4": {
           "Kenjis\\CI4Twig\\": "src/CI4Twig/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Kenjis\\CI4Twig\\": "tests/CI4Twig/"
+        }
     }
 }
