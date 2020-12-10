@@ -4,6 +4,8 @@
 
 This package provides simple Twig integration for [CodeIgniter](https://github.com/codeigniter4/CodeIgniter4) 4.x.
 
+If you use CodeIgniter3, check [master](https://github.com/kenjis/codeigniter-ss-twig/tree/master) branch.
+
 ## Requirements
 
 * PHP 7.2 or later
