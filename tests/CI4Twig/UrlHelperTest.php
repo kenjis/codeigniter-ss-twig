@@ -1,4 +1,5 @@
 <?php
+
 namespace Kenjis\CI4Twig;
 
 class UrlHelperTest extends TestCase
