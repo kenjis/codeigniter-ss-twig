@@ -250,7 +250,7 @@ class Twig
 		$new_attr = [];
 		foreach ($attributes as $key => $val)
 		{
-			$new_attr[esc($key)] = esc($val);
+			$new_attr[esc($key)] = $val;
 		}
 
 		return anchor($uri, $title, $new_attr);
