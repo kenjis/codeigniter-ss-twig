@@ -30,5 +30,8 @@
         "psr-4": {
           "Kenjis\\CI4Twig\\": "tests/CI4Twig/"
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
