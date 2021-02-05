@@ -26,7 +26,7 @@ codeigniter/
 
 ~~~
 $ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-ss-twig
+$ composer require kenjis/codeigniter-ss-twig:^1.0
 ~~~
 
 Install `libraries/Twig.php` to your CodeIgniter application folder:
