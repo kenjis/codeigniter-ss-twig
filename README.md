@@ -4,7 +4,7 @@
 
 This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.x.
 
-If you use CodeIgniter4, check [4.x](https://github.com/kenjis/codeigniter-ss-twig/tree/4.x) branch (under development).
+If you use CodeIgniter4, check [4.x](https://github.com/kenjis/codeigniter-ss-twig/tree/4.x) branch.
 
 ## Folder Structure
 
