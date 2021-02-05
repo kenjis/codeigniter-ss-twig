@@ -18,7 +18,7 @@ If you use CodeIgniter3, check [master](https://github.com/kenjis/codeigniter-ss
 
 ~~~
 $ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-ss-twig:4.x-dev
+$ composer require kenjis/codeigniter-ss-twig
 ~~~
 
 ## Usage
@@ -96,7 +96,7 @@ $this->twig = new \Kenjis\CI4Twig\Twig($config);
 
 If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and **you have to make sure the output of the function is XSS free**.
 
-### Reference
+### References
 
 #### Documentation
 
@@ -117,11 +117,7 @@ $ composer install
 $ vendor/bin/phpunit
 ~~~
 
-## Related Projects for CodeIgniter 3.x
+## Related Projects for CodeIgniter 4.x
 
-* [CodeIgniter Composer Installer](https://github.com/kenjis/codeigniter-composer-installer)
-* [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)
-* [ci-phpunit-test](https://github.com/kenjis/ci-phpunit-test)
-* [CodeIgniter Doctrine](https://github.com/kenjis/codeigniter-doctrine)
-* [CodeIgniter Deployer](https://github.com/kenjis/codeigniter-deployer)
-* [CodeIgniter3 Filename Checker](https://github.com/kenjis/codeigniter3-filename-checker)
+- [CodeIgniter4 Application Template](https://github.com/kenjis/ci4-app-template)
+- [CodeIgniter3-like Captcha](https://github.com/kenjis/ci3-like-captcha)
