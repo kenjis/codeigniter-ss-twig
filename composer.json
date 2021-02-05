@@ -1,16 +1,18 @@
 {
     "name": "kenjis/codeigniter-ss-twig",
+    "type": "library",
     "description": "A Simple and Secure Twig integration for CodeIgniter",
     "keywords": [
         "codeigniter",
         "codeigniter4",
         "twig"
     ],
+    "homepage": "https://github.com/kenjis/codeigniter-ss-twig",
     "license": "MIT",
     "authors": [
         {
             "name": "Kenji Suzuki",
-            "homepage": "https://github.com/kenjis/codeigniter-ss-twig"
+            "homepage": "https://github.com/kenjis"
         }
     ],
     "require": {
