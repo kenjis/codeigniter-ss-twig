@@ -8,9 +8,9 @@ If you use CodeIgniter3, check [master](https://github.com/kenjis/codeigniter-ss
 
 ## Requirements
 
-* PHP 7.2 or later
-* CodeIgniter 4.0.4 or later
-* Twig 3.1.1 or later
+* PHP 7.3 or later
+* CodeIgniter 4.2 or later
+* Twig 3.3.8 or later
 
 ## Installation
 
