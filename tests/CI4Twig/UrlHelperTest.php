@@ -43,7 +43,7 @@ class UrlHelperTest extends TestCase
             ['title' => 'The best news!']
         );
 //        $expected = '<a href="http://localhost/index.php/news/local/123" title="The best news!">My News</a>'; // CI3
-        $expected = '<a href="http://localhost/index.php/news/local/123" title="The&#x20;best&#x20;news&#x21;">My News</a>';
+        $expected = '<a href="http://localhost/index.php/news/local/123" title="The best news!">My News</a>';
         $this->assertEquals($expected, $actual);
 
         $actual = anchor(
@@ -52,7 +52,7 @@ class UrlHelperTest extends TestCase
             ['<s>name</s>' => '<s>val</s>']
         );
 //        $expected = '<a href="http://localhost/index.php/news/local/123" <s>name</s>="<s>val</s>"><s>abc</s></a>'; // CI3
-        $expected = '<a href="http://localhost/index.php/news/local/123" <s>name</s>="&lt;s&gt;val&lt;&#x2F;s&gt;"><s>abc</s></a>';
+        $expected = '<a href="http://localhost/index.php/news/local/123" <s>name</s>="&lt;s&gt;val&lt;/s&gt;"><s>abc</s></a>';
         $this->assertEquals($expected, $actual);
     }
 
