@@ -104,10 +104,11 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 
 #### Samples
 
+* https://github.com/kenjis/ci4-tettei-apps (Japanese)
+
 @TODO
 
 * https://github.com/kenjis/codeigniter-twig-samples
-* https://github.com/kenjis/codeigniter-tettei-apps
 
 ## How to Run Tests
 
