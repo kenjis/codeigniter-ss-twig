@@ -41,6 +41,11 @@ class Twig
     ];
 
     /**
+     * @var array Filters to add to Twig
+     */
+    private $filters = [];
+
+    /**
      * @var array Functions with `is_safe` option
      *
      * @see https://twig.symfony.com/doc/3.x/advanced.html#automatic-escaping
@@ -85,6 +90,14 @@ class Twig
                 )
             );
             unset($params['functions_safe']);
+        }
+
+        if (isset($params['filters'])) {
+            $this->filters =
+                array_unique(
+                    array_merge($this->filters, $params['filters'])
+                );
+            unset($params['filters']);
         }
 
         if (isset($params['paths'])) {
@@ -179,10 +192,27 @@ class Twig
         // We call addFunctions() here, because we must call addFunctions()
         // after loading CodeIgniter functions in a controller.
         $this->addFunctions();
+        $this->addFilters();
 
         $view = $view . '.twig';
 
         return $this->twig->render($view, $params);
+    }
+
+    protected function addFilters()
+    {
+        if( !empty($this->filters) ){
+            foreach ($this->filters as $filter) {
+                if (function_exists($filter)) {
+                    $this->twig->addFilter(
+                        new \Twig\TwigFilter(
+                            $filter,
+                            $filter
+                        )
+                    );
+                }
+            }
+        }
     }
 
     protected function addFunctions()
