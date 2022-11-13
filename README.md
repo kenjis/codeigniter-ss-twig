@@ -82,14 +82,15 @@ $twig = $this->twig->getTwig();
 
 Some helpers are added the functionality of auto-escaping for security.
 
-### Adding Your Functions
+### Adding Your Functions & filters
 
-You can add your functions with configuration:
+You can add your functions and filters with configuration:
 
 ~~~php
 $config = [
 	'functions' => ['my_helper'],
 	'functions_safe' => ['my_safe_helper'],
+	'filters' => ['my_filter'],
 ];
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
