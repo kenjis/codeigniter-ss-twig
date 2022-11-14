@@ -20,7 +20,6 @@
         "twig/twig": "^3.3.8"
     },
     "require-dev": {
-        "codeigniter4/framework": "^4.2",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
