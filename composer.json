@@ -22,6 +22,12 @@
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     },
+    "suggest": {
+        "codeigniter4/framework": "Library originaly designed for CI4"
+    },
+    "conflict": {
+        "codeigniter4/framework": "<4.2"
+    },
     "autoload": {
         "psr-4": {
           "Kenjis\\CI4Twig\\": "src/CI4Twig/"
