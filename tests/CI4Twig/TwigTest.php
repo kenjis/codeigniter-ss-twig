@@ -6,7 +6,10 @@ use ReflectionObject;
 
 require __DIR__ . '/../twig_functions.php';
 
-class TwigTest extends TestCase
+/**
+ * @internal
+ */
+final class TwigTest extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
@@ -24,14 +27,14 @@ class TwigTest extends TestCase
             'name' => 'CodeIgniter',
         ];
         $output = $obj->render('welcome', $data);
-        $this->assertEquals('Hello CodeIgniter!' . "\n", $output);
+        $this->assertSame("Hello CodeIgniter!\n", $output);
     }
 
     public function testDisplay()
     {
         $obj = new Twig(['paths' => __DIR__ . '/../templates/']);
 
-        $this->expectOutputString('Hello CodeIgniter!' . "\n");
+        $this->expectOutputString("Hello CodeIgniter!\n");
 
         $data = [
             'name' => 'CodeIgniter',
@@ -45,7 +48,7 @@ class TwigTest extends TestCase
         $obj->addGlobal('sitename', 'Twig Test Site');
 
         $output = $obj->render('global');
-        $this->assertEquals('<title>Twig Test Site</title>' . "\n", $output);
+        $this->assertSame("<title>Twig Test Site</title>\n", $output);
     }
 
     public function testAddFunctionsRunsOnlyOnce()
@@ -56,55 +59,55 @@ class TwigTest extends TestCase
             'name' => 'CodeIgniter',
         ];
 
-        $ref_obj = new ReflectionObject($obj);
+        $ref_obj      = new ReflectionObject($obj);
         $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
         $functions_added = $ref_property->getValue($obj);
-        $this->assertEquals(false, $functions_added);
+        $this->assertFalse($functions_added);
 
         $output = $obj->render('welcome', $data);
 
-        $ref_obj = new ReflectionObject($obj);
+        $ref_obj      = new ReflectionObject($obj);
         $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
         $functions_added = $ref_property->getValue($obj);
-        $this->assertEquals(true, $functions_added);
+        $this->assertTrue($functions_added);
 
         // Calls render() twice
         $output = $obj->render('welcome', $data);
 
-        $ref_obj = new ReflectionObject($obj);
+        $ref_obj      = new ReflectionObject($obj);
         $ref_property = $ref_obj->getProperty('functions_added');
         $ref_property->setAccessible(true);
         $functions_added = $ref_property->getValue($obj);
-        $this->assertEquals(true, $functions_added);
+        $this->assertTrue($functions_added);
     }
 
     public function testFunctionAsIs()
     {
         $obj = new Twig(
             [
-                'paths' => __DIR__ . '/../templates/',
+                'paths'     => __DIR__ . '/../templates/',
                 'functions' => ['md5'],
-                'cache' => false,
+                'cache'     => false,
             ]
         );
 
         $output = $obj->render('functions_asis');
-        $this->assertEquals('900150983cd24fb0d6963f7d28e17f72' . "\n", $output);
+        $this->assertSame("900150983cd24fb0d6963f7d28e17f72\n", $output);
     }
 
     public function testFunctionSafe()
     {
         $obj = new Twig(
             [
-                'paths' => __DIR__ . '/../templates/',
+                'paths'          => __DIR__ . '/../templates/',
                 'functions_safe' => ['test_safe'],
-                'cache' => false,
+                'cache'          => false,
             ]
         );
 
         $output = $obj->render('functions_safe');
-        $this->assertEquals('<s>test</s>' . "\n", $output);
+        $this->assertSame("<s>test</s>\n", $output);
     }
 }
