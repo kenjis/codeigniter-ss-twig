@@ -21,7 +21,8 @@
     },
     "require-dev": {
         "codeigniter4/framework": "^4.2",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "codeigniter4/devkit": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -35,5 +36,12 @@
     },
     "scripts": {
         "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     }
 }
