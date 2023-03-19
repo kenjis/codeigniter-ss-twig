@@ -35,6 +35,8 @@
         }
     },
     "scripts": {
+        "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
         "test": "phpunit"
     },
     "minimum-stability": "dev",
