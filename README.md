@@ -33,8 +33,8 @@ You can override the default configuration:
 
 ~~~php
 $config = [
-	'paths' => ['/path/to/twig/templates', VIEWPATH],
-	'cache' => '/path/to/twig/cache',
+    'paths' => ['/path/to/twig/templates', VIEWPATH],
+    'cache' => '/path/to/twig/cache',
 ];
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
@@ -88,9 +88,9 @@ You can add your functions and filters with configuration:
 
 ~~~php
 $config = [
-	'functions' => ['my_helper'],
-	'functions_safe' => ['my_safe_helper'],
-	'filters' => ['my_filter'],
+    'functions'      => ['my_helper'],
+    'functions_safe' => ['my_safe_helper'],
+    'filters'        => ['my_filter'],
 ];
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
