@@ -253,7 +253,16 @@ class Twig
         }
 
         // customized functions
-        if (function_exists('anchor')) {
+        $this->addCustomizedFunctions();
+
+        $this->functions_added = true;
+    }
+
+    protected function addCustomizedFunctions()
+    {
+        $functions = array_merge($this->functions_asis, $this->functions_safe);
+
+        if (! in_array('anchor', $functions, true) && function_exists('anchor')) {
             $this->twig->addFunction(
                 new TwigFunction(
                     'anchor',
@@ -263,15 +272,15 @@ class Twig
             );
         }
 
-        $this->twig->addFunction(
-            new TwigFunction(
-                'validation_list_errors',
-                [$this, 'validation_list_errors'],
-                ['is_safe' => ['html']]
-            )
-        );
-
-        $this->functions_added = true;
+        if (! in_array('validation_list_errors', $functions, true)) {
+            $this->twig->addFunction(
+                new TwigFunction(
+                    'validation_list_errors',
+                    [$this, 'validation_list_errors'],
+                    ['is_safe' => ['html']]
+                )
+            );
+        }
     }
 
     /**

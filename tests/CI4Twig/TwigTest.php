@@ -107,6 +107,18 @@ final class TwigTest extends TestCase
         $this->assertSame("<s>test</s>\n", $output);
     }
 
+    public function testFunctionCustomized()
+    {
+        $obj = new Twig([
+            'paths'     => __DIR__ . '/../templates/',
+            'functions' => ['validation_list_errors'],
+            'cache'     => false,
+        ]);
+
+        $output = $obj->render('functions_customized_override');
+        $this->assertSame("override\n", $output);
+    }
+
     public function testFilter()
     {
         $obj = new Twig([
