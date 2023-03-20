@@ -71,14 +71,14 @@ $twig = $this->twig->getTwig();
 
 ### Supported CodeIgniter Helpers
 
-* `base_url`
-* `site_url`
-* `anchor`
-* `form_open`
-* `form_close`
-* `form_error`
-* `form_hidden`
-* `set_value`
+* `base_url()`
+* `site_url()`
+* `anchor()`
+* `form_open()`
+* `form_close()`
+* `form_error()`
+* `form_hidden()`
+* `set_value()`
 
 Some helpers are added the functionality of auto-escaping for security.
 
