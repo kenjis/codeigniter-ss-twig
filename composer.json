@@ -37,7 +37,8 @@
     "scripts": {
         "analyze": [
             "bash -c \"XDEBUG_MODE=off phpstan analyse\"",
-            "psalm"
+            "psalm",
+            "rector process --dry-run"
         ],
         "sa": "@analyze",
         "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
