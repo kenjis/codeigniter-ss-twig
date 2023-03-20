@@ -67,6 +67,11 @@ class Twig
      */
     private bool $functions_added = false;
 
+    /**
+     * @var bool Whether filters are added or not
+     */
+    private bool $filters_added = false;
+
     private ?Environment $twig = null;
 
     /**
@@ -189,6 +194,7 @@ class Twig
     public function render($view, $params = []): string
     {
         $this->createTwig();
+
         // We call addFunctions() here, because we must call addFunctions()
         // after loading CodeIgniter functions in a controller.
         $this->addFunctions();
@@ -201,6 +207,11 @@ class Twig
 
     protected function addFilters()
     {
+        // Runs only once
+        if ($this->filters_added) {
+            return;
+        }
+
         foreach ($this->filters as $filter) {
             if (function_exists($filter)) {
                 $this->twig->addFilter(
@@ -211,6 +222,8 @@ class Twig
                 );
             }
         }
+
+        $this->filters_added = true;
     }
 
     protected function addFunctions()
