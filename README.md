@@ -79,8 +79,15 @@ $twig = $this->twig->getTwig();
 * `form_error()`
 * `form_hidden()`
 * `set_value()`
+* `csrf_field()`
+* `validation_list_errors()`
 
 Some helpers are added the functionality of auto-escaping for security.
+
+> **Warning**
+> `validation_list_errors()` shows Validation Errors by `Services::validation()->listErrors()`,
+> and if you use user input for Validation Error messages, attackers may do XSS.
+> In such a case, validate user input and escape it by yourself.
 
 ### Adding Your Functions & Filters
 
