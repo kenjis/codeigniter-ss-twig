@@ -8,7 +8,11 @@
     - PHP 7.4 or later.
     - Twig 3.4.3 or later.
     - CodeIgniter 4.2.11 or later.
+
+### Added
+
 - Add functionality to add your filters. See [README](README.md#adding-your-functions--filters).
+- Add functionality to override functions that are customized by *CodeIgniter Simple and Secure Twig*.
 
 ## v4.1.0 (2022-09-20)
 

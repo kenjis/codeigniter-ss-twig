@@ -79,8 +79,15 @@ $twig = $this->twig->getTwig();
 * `form_error()`
 * `form_hidden()`
 * `set_value()`
+* `csrf_field()`
+* `validation_list_errors()`
 
 Some helpers are added the functionality of auto-escaping for security.
+
+> **Warning**
+> `validation_list_errors()` shows Validation Errors by `Services::validation()->listErrors()`,
+> and if you use user input for Validation Error messages, attackers may do XSS.
+> In such a case, validate user input and escape it by yourself.
 
 ### Adding Your Functions & Filters
 
@@ -95,7 +102,9 @@ $config = [
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
 
-If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and **you have to make sure the output of the function is XSS free**.
+If your function explicitly outputs HTML code, you want the raw output to be printed.
+In such a case, use `functions_safe`, and **you have to make sure the output of
+the function is XSS free**.
 
 ### References
 
