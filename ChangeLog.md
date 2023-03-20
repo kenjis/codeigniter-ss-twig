@@ -1,6 +1,6 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
-## v4.2.0 (Unreleased)
+## v4.2.0 (2023-03-20)
 
 ### Changed
 
