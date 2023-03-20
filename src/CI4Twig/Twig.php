@@ -95,6 +95,7 @@ class Twig
         }
 
         // default Twig config
+        /** @psalm-suppress UndefinedConstant */
         $this->config = [
             'cache'      => WRITEPATH . 'cache/twig',
             'debug'      => ENVIRONMENT !== 'production',
