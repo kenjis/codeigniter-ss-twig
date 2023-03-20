@@ -16,6 +16,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class Twig
@@ -43,7 +44,7 @@ class Twig
     /**
      * @var array Filters to add to Twig
      */
-    private $filters = [];
+    private array $filters = [];
 
     /**
      * @var array Functions with `is_safe` option
@@ -93,10 +94,9 @@ class Twig
         }
 
         if (isset($params['filters'])) {
-            $this->filters =
-                array_unique(
-                    array_merge($this->filters, $params['filters'])
-                );
+            $this->filters = array_unique(
+                array_merge($this->filters, $params['filters'])
+            );
             unset($params['filters']);
         }
 
@@ -201,16 +201,14 @@ class Twig
 
     protected function addFilters()
     {
-        if( !empty($this->filters) ){
-            foreach ($this->filters as $filter) {
-                if (function_exists($filter)) {
-                    $this->twig->addFilter(
-                        new \Twig\TwigFilter(
-                            $filter,
-                            $filter
-                        )
-                    );
-                }
+        foreach ($this->filters as $filter) {
+            if (function_exists($filter)) {
+                $this->twig->addFilter(
+                    new TwigFilter(
+                        $filter,
+                        $filter
+                    )
+                );
             }
         }
     }
