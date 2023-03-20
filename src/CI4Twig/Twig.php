@@ -215,10 +215,7 @@ class Twig
         foreach ($this->filters as $filter) {
             if (function_exists($filter)) {
                 $this->twig->addFilter(
-                    new TwigFilter(
-                        $filter,
-                        $filter
-                    )
+                    new TwigFilter($filter, $filter)
                 );
             }
         }
@@ -237,10 +234,7 @@ class Twig
         foreach ($this->functions_asis as $function) {
             if (function_exists($function)) {
                 $this->twig->addFunction(
-                    new TwigFunction(
-                        $function,
-                        $function
-                    )
+                    new TwigFunction($function, $function)
                 );
             }
         }
