@@ -82,7 +82,7 @@ $twig = $this->twig->getTwig();
 
 Some helpers are added the functionality of auto-escaping for security.
 
-### Adding Your Functions & filters
+### Adding Your Functions & Filters
 
 You can add your functions and filters with configuration:
 
