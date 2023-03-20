@@ -16,6 +16,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class Twig
@@ -41,6 +42,11 @@ class Twig
     ];
 
     /**
+     * @var array Filters to add to Twig
+     */
+    private array $filters = [];
+
+    /**
      * @var array Functions with `is_safe` option
      *
      * @see https://twig.symfony.com/doc/3.x/advanced.html#automatic-escaping
@@ -60,6 +66,11 @@ class Twig
      * @var bool Whether functions are added or not
      */
     private bool $functions_added = false;
+
+    /**
+     * @var bool Whether filters are added or not
+     */
+    private bool $filters_added = false;
 
     private ?Environment $twig = null;
 
@@ -85,6 +96,13 @@ class Twig
                 )
             );
             unset($params['functions_safe']);
+        }
+
+        if (isset($params['filters'])) {
+            $this->filters = array_unique(
+                array_merge($this->filters, $params['filters'])
+            );
+            unset($params['filters']);
         }
 
         if (isset($params['paths'])) {
@@ -176,13 +194,33 @@ class Twig
     public function render($view, $params = []): string
     {
         $this->createTwig();
+
         // We call addFunctions() here, because we must call addFunctions()
         // after loading CodeIgniter functions in a controller.
         $this->addFunctions();
+        $this->addFilters();
 
         $view = $view . '.twig';
 
         return $this->twig->render($view, $params);
+    }
+
+    protected function addFilters()
+    {
+        // Runs only once
+        if ($this->filters_added) {
+            return;
+        }
+
+        foreach ($this->filters as $filter) {
+            if (function_exists($filter)) {
+                $this->twig->addFilter(
+                    new TwigFilter($filter, $filter)
+                );
+            }
+        }
+
+        $this->filters_added = true;
     }
 
     protected function addFunctions()
@@ -196,10 +234,7 @@ class Twig
         foreach ($this->functions_asis as $function) {
             if (function_exists($function)) {
                 $this->twig->addFunction(
-                    new TwigFunction(
-                        $function,
-                        $function
-                    )
+                    new TwigFunction($function, $function)
                 );
             }
         }

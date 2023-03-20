@@ -1,5 +1,15 @@
 # Change Log for CodeIgniter Simple and Secure Twig
 
+## v4.2.0 (Unreleased)
+
+### Changed
+
+- Require:
+    - PHP 7.4 or later.
+    - Twig 3.4.3 or later.
+    - CodeIgniter 4.2.11 or later.
+- Add functionality to add your filters. See [README](README.md#adding-your-functions--filters).
+
 ## v4.1.0 (2022-09-20)
 
 ### Changed
@@ -51,7 +61,7 @@
 
 ### Added
 
-* Add functionality to add your functions. See [README](README.md#adding-your-functions).
+* Add functionality to add your functions. See [README](README.md#adding-your-functions--filters).
 
 ## v0.1.0 (2015/11/17)
 

@@ -8,9 +8,9 @@ If you use CodeIgniter3, check [master](https://github.com/kenjis/codeigniter-ss
 
 ## Requirements
 
-* PHP 7.3 or later
-* CodeIgniter 4.2 or later
-* Twig 3.3.8 or later
+* PHP 7.4 or later
+* CodeIgniter 4.2.11 or later
+* Twig 3.4.3 or later
 
 ## Installation
 
@@ -33,8 +33,8 @@ You can override the default configuration:
 
 ~~~php
 $config = [
-	'paths' => ['/path/to/twig/templates', VIEWPATH],
-	'cache' => '/path/to/twig/cache',
+    'paths' => ['/path/to/twig/templates', VIEWPATH],
+    'cache' => '/path/to/twig/cache',
 ];
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
@@ -71,25 +71,26 @@ $twig = $this->twig->getTwig();
 
 ### Supported CodeIgniter Helpers
 
-* `base_url`
-* `site_url`
-* `anchor`
-* `form_open`
-* `form_close`
-* `form_error`
-* `form_hidden`
-* `set_value`
+* `base_url()`
+* `site_url()`
+* `anchor()`
+* `form_open()`
+* `form_close()`
+* `form_error()`
+* `form_hidden()`
+* `set_value()`
 
 Some helpers are added the functionality of auto-escaping for security.
 
-### Adding Your Functions
+### Adding Your Functions & Filters
 
-You can add your functions with configuration:
+You can add your functions and filters with configuration:
 
 ~~~php
 $config = [
-	'functions' => ['my_helper'],
-	'functions_safe' => ['my_safe_helper'],
+    'functions'      => ['my_helper'],
+    'functions_safe' => ['my_safe_helper'],
+    'filters'        => ['my_filter'],
 ];
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~

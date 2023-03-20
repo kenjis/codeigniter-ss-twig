@@ -19,7 +19,7 @@ final class TwigTest extends TestCase
         helper('form');
     }
 
-    public function testRedner()
+    public function testRender()
     {
         $obj = new Twig(['paths' => __DIR__ . '/../templates/']);
 
@@ -109,5 +109,19 @@ final class TwigTest extends TestCase
 
         $output = $obj->render('functions_safe');
         $this->assertSame("<s>test</s>\n", $output);
+    }
+
+    public function testFilter()
+    {
+        $obj = new Twig(
+            [
+                'paths'   => __DIR__ . '/../templates/',
+                'filters' => ['str_rot13'],
+                'cache'   => false,
+            ]
+        );
+
+        $output = $obj->render('filters');
+        $this->assertSame("PbqrVtavgre Fvzcyr naq Frpher Gjvt\n", $output);
     }
 }
