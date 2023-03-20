@@ -3,15 +3,16 @@
 namespace Kenjis\CI4Twig;
 
 use Closure;
+use ReflectionClass;
 use ReflectionMethod;
 use ReflectionObject;
-use ReflectionClass;
 
 class ReflectionHelper
 {
     /**
-     * @param object|string $obj object or class name
-     * @param string $method method name
+     * @param object|string $obj    object or class name
+     * @param string        $method method name
+     *
      * @return closure
      */
     public static function getPrivateMethodInvoker($obj, $method)
@@ -20,19 +21,12 @@ class ReflectionHelper
         $ref_method->setAccessible(true);
         $obj = (gettype($obj) === 'object') ? $obj : null;
 
-        return function () use ($obj, $ref_method) {
-            $args = func_get_args();
-            return $ref_method->invokeArgs($obj, $args);
-        };
+        return static fn (...$args) => $ref_method->invokeArgs($obj, $args);
     }
 
     protected static function getAccessibleRefProperty($obj, $property)
     {
-        if (is_object($obj)) {
-            $ref_class = new ReflectionObject($obj);
-        } else {
-            $ref_class = new ReflectionClass($obj);
-        }
+        $ref_class = is_object($obj) ? new ReflectionObject($obj) : new ReflectionClass($obj);
 
         $ref_property = $ref_class->getProperty($property);
         $ref_property->setAccessible(true);
@@ -41,9 +35,9 @@ class ReflectionHelper
     }
 
     /**
-     * @param object|string $obj object or class name
-     * @param string $property property name
-     * @param mixed $value value
+     * @param object|string $obj      object or class name
+     * @param string        $property property name
+     * @param mixed         $value    value
      */
     public static function setPrivateProperty($obj, $property, $value)
     {
@@ -52,13 +46,15 @@ class ReflectionHelper
     }
 
     /**
-     * @param object|string $obj object or class name
-     * @param string $property property name
+     * @param object|string $obj      object or class name
+     * @param string        $property property name
+     *
      * @return mixed value
      */
     public static function getPrivateProperty($obj, $property)
     {
         $ref_property = self::getAccessibleRefProperty($obj, $property);
+
         return $ref_property->getValue($obj);
     }
 }
