@@ -17,10 +17,10 @@
     ],
     "require": {
         "php": ">=7.4.0",
-        "twig/twig": "^3.3.8"
+        "twig/twig": "^3.4.3"
     },
     "require-dev": {
-        "codeigniter4/framework": "^4.2",
+        "codeigniter4/framework": "^4.2.11",
         "phpunit/phpunit": "^9.5",
         "codeigniter4/devkit": "^1.1"
     },
