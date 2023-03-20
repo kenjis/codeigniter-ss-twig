@@ -35,6 +35,10 @@
         }
     },
     "scripts": {
+        "analyze": [
+            "bash -c \"XDEBUG_MODE=off phpstan analyse\""
+        ],
+        "sa": "@analyze",
         "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
         "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
         "test": "phpunit"
