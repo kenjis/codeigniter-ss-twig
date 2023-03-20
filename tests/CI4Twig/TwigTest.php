@@ -85,13 +85,11 @@ final class TwigTest extends TestCase
 
     public function testFunctionAsIs()
     {
-        $obj = new Twig(
-            [
-                'paths'     => __DIR__ . '/../templates/',
-                'functions' => ['md5'],
-                'cache'     => false,
-            ]
-        );
+        $obj = new Twig([
+            'paths'     => __DIR__ . '/../templates/',
+            'functions' => ['md5'],
+            'cache'     => false,
+        ]);
 
         $output = $obj->render('functions_asis');
         $this->assertSame("900150983cd24fb0d6963f7d28e17f72\n", $output);
@@ -99,13 +97,11 @@ final class TwigTest extends TestCase
 
     public function testFunctionSafe()
     {
-        $obj = new Twig(
-            [
-                'paths'          => __DIR__ . '/../templates/',
-                'functions_safe' => ['test_safe'],
-                'cache'          => false,
-            ]
-        );
+        $obj = new Twig([
+            'paths'          => __DIR__ . '/../templates/',
+            'functions_safe' => ['test_safe'],
+            'cache'          => false,
+        ]);
 
         $output = $obj->render('functions_safe');
         $this->assertSame("<s>test</s>\n", $output);
@@ -113,13 +109,11 @@ final class TwigTest extends TestCase
 
     public function testFilter()
     {
-        $obj = new Twig(
-            [
-                'paths'   => __DIR__ . '/../templates/',
-                'filters' => ['str_rot13'],
-                'cache'   => false,
-            ]
-        );
+        $obj = new Twig([
+            'paths'   => __DIR__ . '/../templates/',
+            'filters' => ['str_rot13'],
+            'cache'   => false,
+        ]);
 
         $output = $obj->render('filters');
         $this->assertSame("PbqrVtavgre Fvzcyr naq Frpher Gjvt\n", $output);
