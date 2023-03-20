@@ -53,7 +53,7 @@ class Twig
     private $functions_added = false;
 
     /**
-     * @var \Twig\Environment
+     * @var \Twig\Environment|null
      */
     private $twig;
 
@@ -85,7 +85,7 @@ class Twig
             $this->paths = $params['paths'];
             unset($params['paths']);
         } else {
-            $this->paths = APPPATH . 'Views/';
+            $this->paths = [APPPATH . 'Views/'];
         }
 
         // default Twig config
