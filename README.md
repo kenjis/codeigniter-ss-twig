@@ -95,7 +95,9 @@ $config = [
 $this->twig = new \Kenjis\CI4Twig\Twig($config);
 ~~~
 
-If your function explicitly outputs HTML code, you will want the raw output to be printed. In such a case, use `functions_safe`, and **you have to make sure the output of the function is XSS free**.
+If your function explicitly outputs HTML code, you want the raw output to be printed.
+In such a case, use `functions_safe`, and **you have to make sure the output of
+the function is XSS free**.
 
 ### References
 
