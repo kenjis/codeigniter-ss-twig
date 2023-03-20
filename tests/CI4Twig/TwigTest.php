@@ -19,7 +19,7 @@ final class TwigTest extends TestCase
         helper('form');
     }
 
-    public function testRedner()
+    public function testRender()
     {
         $obj = new Twig(['paths' => __DIR__ . '/../templates/']);
 
