@@ -21,20 +21,12 @@ class ReflectionHelper
         $ref_method->setAccessible(true);
         $obj = (gettype($obj) === 'object') ? $obj : null;
 
-        return static function () use ($obj, $ref_method) {
-            $args = func_get_args();
-
-            return $ref_method->invokeArgs($obj, $args);
-        };
+        return static fn (...$args) => $ref_method->invokeArgs($obj, $args);
     }
 
     protected static function getAccessibleRefProperty($obj, $property)
     {
-        if (is_object($obj)) {
-            $ref_class = new ReflectionObject($obj);
-        } else {
-            $ref_class = new ReflectionClass($obj);
-        }
+        $ref_class = is_object($obj) ? new ReflectionObject($obj) : new ReflectionClass($obj);
 
         $ref_property = $ref_class->getProperty($property);
         $ref_property->setAccessible(true);

@@ -2,12 +2,15 @@
 
 namespace Kenjis\CI4Twig;
 
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
+
 /**
  * @internal
  */
 final class TwigHelperTest extends TestCase
 {
-    private $twig;
+    private Environment $twig;
 
     public static function setUpBeforeClass(): void
     {
@@ -20,7 +23,7 @@ final class TwigHelperTest extends TestCase
     {
         $twig = new Twig();
 
-        $loader = new \Twig\Loader\ArrayLoader(
+        $loader = new ArrayLoader(
             [
                 'base_url' => '{{ base_url(\'"><s>abc</s><a name="test\') }}',
                 'site_url' => '{{ site_url(\'"><s>abc</s><a name="test\') }}',
