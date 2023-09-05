@@ -59,43 +59,43 @@ final class UrlHelperTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-//    public function test_current_url()
-//    {
-//    }
-//
-//    public function test_uri_string()
-//    {
-//    }
-//
-//    public function test_index_page()
-//    {
-//    }
-//
-//    public function test_anchor_popup()
-//    {
-//    }
-//
-//    public function test_mailto()
-//    {
-//    }
-//
-//    public function test_safe_mailto()
-//    {
-//    }
-//
-//    public function test_auto_link()
-//    {
-//    }
-//
-//    public function test_prep_url()
-//    {
-//    }
-//
-//    public function test_url_title()
-//    {
-//    }
-//
-//    public function test_redirect()
-//    {
-//    }
+    //    public function test_current_url()
+    //    {
+    //    }
+    //
+    //    public function test_uri_string()
+    //    {
+    //    }
+    //
+    //    public function test_index_page()
+    //    {
+    //    }
+    //
+    //    public function test_anchor_popup()
+    //    {
+    //    }
+    //
+    //    public function test_mailto()
+    //    {
+    //    }
+    //
+    //    public function test_safe_mailto()
+    //    {
+    //    }
+    //
+    //    public function test_auto_link()
+    //    {
+    //    }
+    //
+    //    public function test_prep_url()
+    //    {
+    //    }
+    //
+    //    public function test_url_title()
+    //    {
+    //    }
+    //
+    //    public function test_redirect()
+    //    {
+    //    }
 }
