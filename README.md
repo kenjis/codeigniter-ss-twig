@@ -4,7 +4,8 @@
 
 This package provides simple Twig integration for [CodeIgniter](https://github.com/codeigniter4/CodeIgniter4) 4.x.
 
-If you use CodeIgniter3, check [master](https://github.com/kenjis/codeigniter-ss-twig/tree/master) branch.
+If you use CodeIgniter 3, check [master](https://github.com/kenjis/codeigniter-ss-twig/tree/master) branch. But Upgrading to CodeIgniter
+4 is strongly recommended.
 
 ## Requirements
 
@@ -114,11 +115,8 @@ the function is XSS free**.
 
 #### Samples
 
+* https://github.com/kenjis/ci4-twig-sample
 * https://github.com/kenjis/ci4-tettei-apps (Japanese)
-
-@TODO
-
-* https://github.com/kenjis/codeigniter-twig-samples
 
 ## How to Run Tests
 
@@ -145,6 +143,7 @@ $ vendor/bin/phpunit
 - [CodeIgniter 4 Validation Tutorial](https://github.com/kenjis/ci4-validation-tutorial)
 - [CodeIgniter4 Code Modules Test](https://github.com/kenjis/ci4-modules-test)
 - [CodeIgniter 4 File Upload](https://github.com/kenjis/ci4-file-upload)
+- [CodeIgniter 4 QueryBuilder Batch Sample](https://github.com/kenjis/ci4-qb-batch-sample)
 
 ### Building Development Environment
 
