@@ -4,6 +4,12 @@
 
 This package provides simple Twig integration for [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) 3.x.
 
+> [!WARNING]
+> CodeIgniter 3 has not been updated for over a year already. It also does not
+> support PHP 8.2. No official announcement has been made, but there is almost
+> no maintainer.
+> Upgrading to CodeIgniter 4 is strongly recommended.
+
 If you use CodeIgniter4, check [4.x](https://github.com/kenjis/codeigniter-ss-twig/tree/4.x) branch.
 
 ## Folder Structure
